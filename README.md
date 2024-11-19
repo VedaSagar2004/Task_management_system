@@ -1,6 +1,10 @@
 # Task Management System
+https://github.com/user-attachments/assets/ec02ad09-0959-494c-a057-bd7d6e145482
 ## Setup
 ### Clone the repository
+
+
+
 
 ```
 git clone https://github.com/VedaSagar2004/Wellness360_Case_Study
