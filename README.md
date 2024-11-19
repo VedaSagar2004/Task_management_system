@@ -193,7 +193,7 @@ response:
   'updated_at': 'Mon, 18 Nov 2024 10:47:01 GMT'
 }
 ```
-### GET tasks/status/<task_status>
+### GET /tasks/status/<task_status>
 List all tasks by task status
 ```
 headers:
@@ -221,7 +221,7 @@ response:
   },
 ]
 ```
-### GET tasks/search/<text_to_search>
+### GET /tasks/search/<text_to_search>
 Search text in title and description
 ```
 headers:
