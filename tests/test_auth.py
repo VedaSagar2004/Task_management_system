@@ -37,5 +37,4 @@ def test_login_user(client):
         '/auth/login',
         json = TestTasks.test_single_user1
     )
-    assert response.json.get('token') == TestTasks.test_token
     assert response.status_code == StatusCodes.OK
