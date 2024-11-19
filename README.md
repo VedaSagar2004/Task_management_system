@@ -9,7 +9,7 @@ cd Wellness360_Case_Study
 ### Install requirements
 
 ```
-virtualenv env --python=python3.8
+python -m venv .env
 .\env\Scripts\activate
 pip install -r requirements.txt
 ```
@@ -80,7 +80,7 @@ response:
 ]
 ```
 ### POST /tasks
-Create an assignment
+Create a task
 ```
 headers:
 {'Authorization': 'Bearer <your_jwt_token>'}
@@ -222,7 +222,7 @@ response:
 ]
 ```
 ### GET tasks/search/<text_to_search>
-Search text in Title and Description
+Search text in title and description
 ```
 headers:
 {'Authorization': 'Bearer <your_jwt_token>'}
