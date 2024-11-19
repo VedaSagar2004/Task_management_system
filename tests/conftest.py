@@ -7,21 +7,13 @@ from app.common.constants import TestTasks
 def client():
     return app.test_client()
 
-
+# clears tasks and users before and after the test
 @pytest.fixture(autouse=True, scope='function')
 def reset_tasks():
-    # original_tasks = db.tasks.copy()
-    # original_users = db.users.copy()
-    
-    # Clear all data
-    db.clear_all()
-    
+    db.clear_all() 
     yield
-    
-    # Clear and reset to original state
     db.clear_all()
-    # db.tasks.extend(original_tasks)
-    # db.users.extend(original_users)
+
 
 
 @pytest.fixture

@@ -3,7 +3,7 @@ from app.tasks import tasks_blueprint
 from app.auth import auth_blueprint
 from app.common.constants import StatusCodes
 
-# Register the tasks blueprint
+
 def create_app():
     app = Flask(__name__)   
     app.register_blueprint(tasks_blueprint, url_prefix='/tasks')

@@ -5,7 +5,7 @@ from app.common.constants import StatusCodes, ErrorMessages, Messages, JWTSecret
 import jwt
 import bcrypt
 
-
+#registers a user and saves username and hashed password in users(in-memory database)
 @auth_blueprint.route('/register', methods=['POST'])
 def register():
     data = request.get_json()
@@ -16,9 +16,10 @@ def register():
             return jsonify({'error': ErrorMessages.USER_ALREADY_EXISTS}), StatusCodes.BAD_REQUEST
     hashed_password = bcrypt.hashpw(data.get('password').encode('utf-8'), bcrypt.gensalt())
     db.users.append({'username': data.get('username'), 'password': hashed_password.decode('utf-8')})
-    return jsonify({'message': Messages.USER_REGISTERED, 'hash': hashed_password.decode('utf-8')}), StatusCodes.CREATED
+    return jsonify({'message': Messages.USER_REGISTERED}), StatusCodes.CREATED
 
 
+#checks if username exists in the in-memory database and returns a jwt token
 @auth_blueprint.route('/login', methods=['POST'])
 def login():
     data = request.get_json()

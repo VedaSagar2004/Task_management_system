@@ -4,6 +4,7 @@ from app.common.constants import ErrorMessages, StatusCodes, JWTSecret
 import jwt
 from app.database.datastore import db
 
+#middleware for authentication
 def require_auth(f):
     @wraps(f)
     def wrapped(*args, **kwargs):

@@ -6,15 +6,16 @@ from app.database.datastore import db
 from app.tasks import tasks_blueprint
 from app.common.constants import StatusCodes, TaskStatus, ErrorMessages
 from uuid import uuid4
-import jwt
 
 
+#List all users
 @tasks_blueprint.route('', methods=['GET'])
 @require_auth
 def get_tasks():
     return jsonify(db.tasks), StatusCodes.OK
 
 
+#Create a task
 @tasks_blueprint.route('', methods=['POST'])
 @require_auth
 def create_task():
@@ -36,6 +37,7 @@ def create_task():
     return jsonify(new_task), StatusCodes.CREATED
 
 
+#Get task by id
 @tasks_blueprint.route('/<string:task_id>', methods=['GET'])
 @require_auth
 def get_task_by_id(task_id):
@@ -46,6 +48,7 @@ def get_task_by_id(task_id):
         return jsonify({'error': ErrorMessages.TASK_NOT_FOUND}), StatusCodes.NOT_FOUND
 
 
+#Update a task by id
 @tasks_blueprint.route('/<string:task_id>', methods=['PUT'])
 @require_auth
 def update_task(task_id):
@@ -61,6 +64,7 @@ def update_task(task_id):
     return jsonify(task), StatusCodes.OK
 
 
+#Delete a task by id
 @tasks_blueprint.route('/<string:task_id>', methods=['DELETE'])
 @require_auth
 def delete_task(task_id):
@@ -71,6 +75,7 @@ def delete_task(task_id):
     return jsonify(deleted_task), StatusCodes.OK
 
 
+#Marks a task as complete
 @tasks_blueprint.route('/<string:task_id>/complete', methods=['PATCH'])
 @require_auth
 def mark_task_complete(task_id):
@@ -84,6 +89,8 @@ def mark_task_complete(task_id):
     return jsonify(task), StatusCodes.OK
 
 
+
+#List all tasks by task status
 @tasks_blueprint.route('/status/<string:task_status>', methods=['GET'])
 @require_auth
 def get_tasks_by_status(task_status):
@@ -93,6 +100,7 @@ def get_tasks_by_status(task_status):
     return jsonify(list(result)), StatusCodes.OK
 
 
+#Marks a task as in_progress
 @tasks_blueprint.route('/<string:task_id>/progress', methods=['PATCH'])
 @require_auth
 def mark_task_in_progress(task_id):
@@ -106,6 +114,7 @@ def mark_task_in_progress(task_id):
     return jsonify(task), StatusCodes.OK
 
 
+#Search text in Title and Description
 @tasks_blueprint.route('/search//<string:text>', methods=['GET'])
 @require_auth
 def search_in_title_and_description(text):

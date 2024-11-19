@@ -1,9 +1,7 @@
-import pytest
-from app import app
 from app.database.datastore import db
 from app.common.constants import TestTasks
-from app.common.constants import StatusCodes, TaskStatus
-import jwt
+from app.common.constants import StatusCodes
+
 
 
 def test_user_already_exists(client):

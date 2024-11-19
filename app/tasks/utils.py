@@ -1,9 +1,11 @@
-from flask import request, jsonify
 from functools import wraps
 from datetime import datetime
 from app.database.datastore import db
 from app.common.constants import ErrorMessages, StatusCodes, JWTSecret
-import jwt
+
+
+# Helper functions
+
 
 def validate_task_data(task_data, required_title=True):
     if not task_data:
